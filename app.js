@@ -1,12 +1,51 @@
-const screens=[["1","Vue d’ensemble","Les loyers, les échéances et les actions prioritaires dans une seule vue."],["2","Tableau de bord des locataires","La situation des locataires en un coup d’œil."],["3","Fiche locataire","Un dossier structuré pour chaque colocataire."],["4","État civil","Les informations du locataire regroupées dans son dossier."],["5","Assurance habitation","Attestation, informations extraites et échéance de renouvellement."],["6","Garanties","Les pièces et informations liées à la garantie du locataire."],["7","Documents du locataire","Les documents associés à chaque dossier."],["8","Baux de location","Les conditions du bail et le suivi de ses documents."],["9","Dépôt de garantie","Le suivi du dépôt dans le parcours locatif."],["9-bis","État des lieux","Le logement et son état, documentés à chaque étape."],["10","Tableau de bord des chambres","Une vue des espaces de votre colocation."],["11","Chambres","Les informations de chaque chambre."],["12","Pièces communes","Les espaces partagés regroupés dans votre bien."],["13","Planning d’entretien","Une répartition des tâches par pièce et par locataire."],["14","Revenus et charges","Les encaissements, les dépenses et leur évolution mensuelle."],["15","Revenus","Le détail des revenus locatifs."],["16","Charges","Le détail des dépenses de votre bien."],["17","Documents","Baux, quittances, assurances : une bibliothèque pour retrouver vos pièces."],["18","Travaux & entretiens","Les interventions et les entretiens périodiques, avec leurs échéances."],["19","Comptabilité & fiscalité","Le calcul de l’année et les points à vérifier avant de déclarer."],["20","Sinistres & impayés","Les dossiers d’impayé en cours et leur prochaine étape."],["21","Suivi d’un impayé","De la relance à la garantie : chaque étape, avec sa date."],["22","Sortie du locataire","Congé, état des lieux, clés et dépôt : le fil d’un départ."],["23","Avant la signature","Ce que les contrôles relèvent avant d’envoyer le bail en signature."],["24","Révision du loyer","La date de révision prévue au bail, et le rappel quand elle devient possible."],["25","Équipements d’une chambre","Les équipements de la chambre, cochés tant qu’ils y sont."],["26","Saisie de l’état des lieux","La chambre, élément par élément, avec observations et photos."],["27","Espace du locataire","Ce que voit chaque colocataire : son loyer, ses documents, le ménage."]];
-
-const galleryImage=document.getElementById('gallery-image');
-function selectScreen(id){const item=screens.find(s=>s[0]===id);if(!item)return;galleryImage.src='assets/screens/screen-'+id+'.png';galleryImage.alt=item[1];document.getElementById('gallery-title').textContent=item[1];document.getElementById('gallery-description').textContent=item[2];document.querySelectorAll('[data-screen]').forEach(b=>{const active=b.dataset.screen===id;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active))});['gallery-open','gallery-enlarge'].forEach(key=>document.getElementById(key).dataset.screenOpen=id)}
-document.querySelectorAll('[data-screen]').forEach(b=>b.addEventListener('click',()=>selectScreen(b.dataset.screen)));
-document.querySelectorAll('[data-screen-link]').forEach(b=>b.addEventListener('click',()=>selectScreen(b.dataset.screenLink)));
-const dialog=document.getElementById('screen-dialog');
-document.querySelectorAll('[data-screen-open]').forEach(b=>b.addEventListener('click',()=>{const item=screens.find(s=>s[0]===b.dataset.screenOpen);document.getElementById('dialog-title').textContent=item[1];const image=document.getElementById('dialog-image');image.src='assets/screens/screen-'+item[0]+'.png';image.alt=item[1];dialog.showModal();document.body.classList.add('dialog-open')}));
-document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});document.getElementById('year').textContent=new Date().getFullYear();
-
-let previousFocus; document.querySelectorAll('[data-screen-open]').forEach(b=>b.addEventListener('click',()=>{previousFocus=b})); dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');previousFocus?.focus()}); const menu=document.querySelector('.menu-toggle');const mobileNav=document.getElementById('mobile-nav');menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fermer la navigation':'Ouvrir la navigation');mobileNav.hidden=!open});mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.hidden=true;menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Ouvrir la navigation')}));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!mobileNav.hidden){mobileNav.hidden=true;menu.setAttribute('aria-expanded','false');menu.focus()}});
-function fermerMenu(){mobileNav.hidden=true;menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Ouvrir la navigation')}document.addEventListener('click',e=>{if(!mobileNav.hidden&&!e.target.closest('header')&&!e.target.closest('#mobile-nav'))fermerMenu()});window.addEventListener('resize',()=>{if(!mobileNav.hidden&&window.innerWidth>760)fermerMenu()});
+'use strict';
+const products={
+piloter:{eyebrow:"Vue d’ensemble",title:"Les priorités, dès l’ouverture.",description:"Loyers du mois, chambres occupées, documents et échéances : vous savez où porter votre attention.",points:["Voir les montants enregistrés et les restes à suivre","Repérer les pièces et échéances à traiter","Ouvrir la fiche concernée depuis le tableau de bord"],image:"assets/screens/screen-1.png",alt:"Vue d’ensemble : priorités et situation de la colocation"},
+loyers:{eyebrow:"Revenus et charges",title:"Chaque paiement retrouve sa place.",description:"Suivez les loyers par chambre, les dépenses et les justificatifs. Les quittances et les reçus s’inscrivent dans le parcours de paiement.",points:["Retrouver l’historique par locataire et par mois","Préparer une quittance quand le mois est soldé","Distinguer les loyers, les charges et les dépenses"],image:"assets/screens/screen-14.png",alt:"Revenus et charges Colokéo : encaissements, dépenses et solde mensuel"},
+documents:{eyebrow:"Documents du bien et des locataires",title:"Les pièces que vous cherchez sont déjà réunies.",description:"Les documents sont classés et rattachés à leur dossier. La lecture automatique propose les informations utiles, que vous vérifiez avant de les appliquer.",points:["Regrouper les baux, assurances, garanties et quittances","Retrouver les documents par catégorie et locataire","Contrôler les informations proposées après analyse"],image:"assets/screens/screen-17.png",alt:"Bibliothèque documentaire Colokéo : catégories, locataires et statuts"},
+bail:{eyebrow:"Préparation du bail",title:"Un parcours avant la signature.",description:"Les informations du bien et du locataire servent à préparer le bail. Les contrôles exposent les sujets à examiner avant son envoi.",points:["Rassembler les données et les pièces du dossier","Prévisualiser le bail préparé","Examiner la garantie, l’identité, l’assurance et les diagnostics"],image:"assets/screens/screen-23.png",alt:"Préparation du bail Colokéo : dossier, version générée et points à vérifier"},
+fiscal:{eyebrow:"Comptabilité et fiscalité",title:"Votre gestion nourrit la préparation de l’année.",description:"Loyers, charges, crédit, travaux et meubles alimentent la préparation comptable. Les calculs et formulaires restent des brouillons à vérifier avant déclaration.",points:["Retrouver les recettes et les dépenses de l’année","Examiner les calculs et les contrôles proposés","Préparer le dossier avant votre propre dépôt fiscal"],image:"assets/screens/screen-19.png",alt:"Module Mon année : calculs et contrôles avant préparation de la déclaration"}
+};
+const tabs=Array.from(document.querySelectorAll('[data-product]'));
+function selectProduct(key){
+ const data=products[key]; if(!data)return;
+ document.getElementById('product-eyebrow').textContent=data.eyebrow;
+ document.getElementById('product-title').textContent=data.title;
+ document.getElementById('product-description').textContent=data.description;
+ const points=document.getElementById('product-points');points.replaceChildren();
+ data.points.forEach(text=>{const li=document.createElement('li');li.textContent=text;points.append(li)});
+ const img=document.getElementById('product-image');img.src=data.image;img.alt=data.alt;
+ const opener=document.getElementById('product-open');opener.dataset.image=data.image;opener.dataset.title=data.eyebrow;
+ opener.setAttribute('aria-label','Agrandir : '+data.eyebrow);
+ document.getElementById('product-panel').setAttribute('aria-labelledby','tab-'+key);
+ tabs.forEach(tab=>{const active=tab.dataset.product===key;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1});
+}
+tabs.forEach(tab=>{tab.addEventListener('click',()=>selectProduct(tab.dataset.product));tab.addEventListener('keydown',event=>{
+ let index=tabs.indexOf(tab);
+ if(event.key==='ArrowRight')index=(index+1)%tabs.length;
+ else if(event.key==='ArrowLeft')index=(index+tabs.length-1)%tabs.length;
+ else if(event.key==='Home')index=0;
+ else if(event.key==='End')index=tabs.length-1;
+ else return;
+ event.preventDefault();selectProduct(tabs[index].dataset.product);tabs[index].focus();
+})});
+const toggle=document.querySelector('.menu-toggle');const mobile=document.getElementById('mobile-nav');
+function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Ouvrir le menu');mobile.hidden=true}
+toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');mobile.hidden=!open});
+mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobile.hidden){closeMenu();toggle.focus()}});
+document.addEventListener('click',event=>{if(!mobile.hidden&&!event.target.closest('header'))closeMenu()});
+const desktopQuery=window.matchMedia('(min-width:851px)');desktopQuery.addEventListener('change',event=>{if(event.matches)closeMenu()});
+const dialog=document.getElementById('screen-dialog');let lastOpener=null;
+document.querySelectorAll('[data-image]').forEach(opener=>opener.addEventListener('click',()=>{
+ if(typeof dialog.showModal!=='function'){window.open(opener.dataset.image,'_blank','noopener');return}
+ lastOpener=opener;document.getElementById('dialog-title').textContent=opener.dataset.title;
+ const image=document.getElementById('dialog-image');image.src=opener.dataset.image;image.alt=opener.dataset.title+' — capture agrandie de démonstration';
+ dialog.showModal();document.body.classList.add('dialog-open');document.getElementById('dialog-close').focus();
+}));
+document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close()}});
+dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');if(lastOpener)lastOpener.focus()});
+document.getElementById('year').textContent=new Date().getFullYear();
+// Sans collecte marketing : les attributs data-conversion identifient les emplacements
+// pour un futur raccordement, après choix de la mesure et de sa politique de confidentialité.
