@@ -1,51 +1,27 @@
 'use strict';
-const products={
-piloter:{eyebrow:"Vue d’ensemble",title:"Les priorités, dès l’ouverture.",description:"Loyers du mois, chambres occupées, documents et échéances : vous savez où porter votre attention.",points:["Voir les montants enregistrés et les restes à suivre","Repérer les pièces et échéances à traiter","Ouvrir la fiche concernée depuis le tableau de bord"],image:"assets/screens/screen-1.png",alt:"Vue d’ensemble : priorités et situation de la colocation"},
-loyers:{eyebrow:"Revenus et charges",title:"Chaque paiement retrouve sa place.",description:"Suivez les loyers par chambre, les dépenses et les justificatifs. Les quittances et les reçus s’inscrivent dans le parcours de paiement.",points:["Retrouver l’historique par locataire et par mois","Préparer une quittance quand le mois est soldé","Distinguer les loyers, les charges et les dépenses"],image:"assets/screens/screen-14.png",alt:"Revenus et charges Colokéo : encaissements, dépenses et solde mensuel"},
-documents:{eyebrow:"Documents du bien et des locataires",title:"Les pièces que vous cherchez sont déjà réunies.",description:"Les documents sont classés et rattachés à leur dossier. La lecture automatique propose les informations utiles, que vous vérifiez avant de les appliquer.",points:["Regrouper les baux, assurances, garanties et quittances","Retrouver les documents par catégorie et locataire","Contrôler les informations proposées après analyse"],image:"assets/screens/screen-17.png",alt:"Bibliothèque documentaire Colokéo : catégories, locataires et statuts"},
-bail:{eyebrow:"Préparation du bail",title:"Un parcours avant la signature.",description:"Les informations du bien et du locataire servent à préparer le bail. Les contrôles exposent les sujets à examiner avant son envoi.",points:["Rassembler les données et les pièces du dossier","Prévisualiser le bail préparé","Examiner la garantie, l’identité, l’assurance et les diagnostics"],image:"assets/screens/screen-23.png",alt:"Préparation du bail Colokéo : dossier, version générée et points à vérifier"},
-fiscal:{eyebrow:"Comptabilité et fiscalité",title:"Votre gestion nourrit la préparation de l’année.",description:"Loyers, charges, crédit, travaux et meubles alimentent la préparation comptable. Les calculs et formulaires restent des brouillons à vérifier avant déclaration.",points:["Retrouver les recettes et les dépenses de l’année","Examiner les calculs et les contrôles proposés","Préparer le dossier avant votre propre dépôt fiscal"],image:"assets/screens/screen-19.png",alt:"Module Mon année : calculs et contrôles avant préparation de la déclaration"}
+const productData={
+loyers:{number:'01 / LA GESTION LOCATIVE',title:'Suis les loyers.\nRetrouve les justificatifs.',description:'Chaque mois, une situation lisible par locataire et par chambre. Les paiements, les quittances et les dépenses restent liés à leur contexte.',checks:['Historique des loyers et des encaissements','Quittance quand le mois est soldé, reçu en cas de paiement partiel','Dépenses et pièces justificatives réunies'],image:'assets/screens/loyers.webp',caption:'Revenus & charges · données de démonstration',alt:'Revenus et charges : encaissements, dépenses et solde mensuel'},
+bail:{number:'02 / LA CONFORMITÉ JURIDIQUE',title:'Prépare ton bail.\nExamine ce qui doit l’être.',description:'Les informations du bien et du locataire préparent le bail. Les contrôles font ressortir les points à examiner avant la signature, y compris la cohérence avec la garantie.',checks:['Informations et pièces du dossier rassemblées','Bail préparé et prévisualisation du document','Points à vérifier : bail, garantie, identité, assurance et diagnostics'],image:'assets/screens/bail.webp',caption:'Document du bail et contrôles · données de démonstration',alt:'Document du bail : dossier, version générée et contrôles avant signature'},
+documents:{number:'03 / LES PIÈCES DU DOSSIER',title:'Classe tes pièces.\nRetrouve-les quand ça compte.',description:'Baux, garanties, attestations et quittances sont rattachés aux dossiers. La lecture automatique propose les informations utiles, soumises à ta vérification avant application.',checks:['Documents classés par dossier, catégorie et locataire','Informations proposées après analyse de la pièce','Pièces et échéances à traiter accessibles depuis la gestion'],image:'assets/screens/documents.webp',caption:'Bibliothèque documentaire · données de démonstration',alt:'Documents : catégories, locataires et statuts des pièces'},
+fiscal:{number:'04 / LA PRÉPARATION FISCALE',title:'Prépare ton année.\nGarde le lien avec tes chiffres.',description:'Loyers, charges, crédit, travaux et meubles alimentent la préparation comptable. Les calculs et formulaires restent des brouillons à vérifier avant ton dépôt fiscal.',checks:['Recettes, dépenses et pièces issues de ta gestion','Amortissements et crédit dans les calculs proposés','Contrôles, chiffres et formulaires à vérifier avant déclaration'],image:'assets/screens/fiscal.webp',caption:'Mon année · calculs de démonstration, non déposés',alt:'Mon année : calculs, recettes, charges et vérifications avant déclaration'}
 };
-const tabs=Array.from(document.querySelectorAll('[data-product]'));
-function selectProduct(key){
- const data=products[key]; if(!data)return;
- document.getElementById('product-eyebrow').textContent=data.eyebrow;
- document.getElementById('product-title').textContent=data.title;
- document.getElementById('product-description').textContent=data.description;
- const points=document.getElementById('product-points');points.replaceChildren();
- data.points.forEach(text=>{const li=document.createElement('li');li.textContent=text;points.append(li)});
- const img=document.getElementById('product-image');img.src=data.image;img.alt=data.alt;
- const opener=document.getElementById('product-open');opener.dataset.image=data.image;opener.dataset.title=data.eyebrow;
- opener.setAttribute('aria-label','Agrandir : '+data.eyebrow);
- document.getElementById('product-panel').setAttribute('aria-labelledby','tab-'+key);
- tabs.forEach(tab=>{const active=tab.dataset.product===key;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1});
-}
-tabs.forEach(tab=>{tab.addEventListener('click',()=>selectProduct(tab.dataset.product));tab.addEventListener('keydown',event=>{
- let index=tabs.indexOf(tab);
- if(event.key==='ArrowRight')index=(index+1)%tabs.length;
- else if(event.key==='ArrowLeft')index=(index+tabs.length-1)%tabs.length;
- else if(event.key==='Home')index=0;
- else if(event.key==='End')index=tabs.length-1;
- else return;
- event.preventDefault();selectProduct(tabs[index].dataset.product);tabs[index].focus();
-})});
-const toggle=document.querySelector('.menu-toggle');const mobile=document.getElementById('mobile-nav');
-function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Ouvrir le menu');mobile.hidden=true}
-toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');mobile.hidden=!open});
-mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobile.hidden){closeMenu();toggle.focus()}});
-document.addEventListener('click',event=>{if(!mobile.hidden&&!event.target.closest('header'))closeMenu()});
-const desktopQuery=window.matchMedia('(min-width:851px)');desktopQuery.addEventListener('change',event=>{if(event.matches)closeMenu()});
-const dialog=document.getElementById('screen-dialog');let lastOpener=null;
-document.querySelectorAll('[data-image]').forEach(opener=>opener.addEventListener('click',()=>{
- if(typeof dialog.showModal!=='function'){window.open(opener.dataset.image,'_blank','noopener');return}
- lastOpener=opener;document.getElementById('dialog-title').textContent=opener.dataset.title;
- const image=document.getElementById('dialog-image');image.src=opener.dataset.image;image.alt=opener.dataset.title+' — capture agrandie de démonstration';
- dialog.showModal();document.body.classList.add('dialog-open');document.getElementById('dialog-close').focus();
-}));
-document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close()}});
-dialog.addEventListener('close',()=>{document.body.classList.remove('dialog-open');if(lastOpener)lastOpener.focus()});
+const productTabs=[...document.querySelectorAll('[data-product]')];
+function selectProduct(key){const d=productData[key];if(!d)return;document.getElementById('product-number').textContent=d.number;const title=document.getElementById('product-title');title.replaceChildren();d.title.split('\n').forEach((line,i)=>{if(i)title.append(document.createElement('br'));title.append(document.createTextNode(line))});document.getElementById('product-description').textContent=d.description;const checks=document.getElementById('product-checks');checks.replaceChildren();d.checks.forEach(t=>{const li=document.createElement('li');li.textContent=t;checks.append(li)});const image=document.getElementById('product-image');image.src=d.image;image.alt=d.alt;document.getElementById('product-caption').textContent=d.caption;const opener=document.getElementById('product-open');opener.dataset.capture=d.image;opener.dataset.caption=d.caption;opener.setAttribute('aria-label','Agrandir : '+d.alt);document.getElementById('product-panel').setAttribute('aria-labelledby','tab-'+key);productTabs.forEach(tab=>{const active=tab.dataset.product===key;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1})}
+productTabs.forEach(tab=>{tab.addEventListener('click',()=>selectProduct(tab.dataset.product));tab.addEventListener('keydown',e=>{let i=productTabs.indexOf(tab);if(e.key==='ArrowRight')i=(i+1)%productTabs.length;else if(e.key==='ArrowLeft')i=(i+productTabs.length-1)%productTabs.length;else if(e.key==='Home')i=0;else if(e.key==='End')i=productTabs.length-1;else return;e.preventDefault();selectProduct(productTabs[i].dataset.product);productTabs[i].focus()})});
+document.querySelectorAll('[data-select]').forEach(a=>a.addEventListener('click',()=>selectProduct(a.dataset.select)));
+const toggle=document.querySelector('.menu-button'),menu=document.getElementById('mobile-nav');
+function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Ouvrir le menu');menu.hidden=true}
+toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');menu.hidden=!open});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){closeMenu();toggle.focus()}});
+document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.site-header'))closeMenu()});
+window.matchMedia('(min-width:901px)').addEventListener('change',e=>{if(e.matches)closeMenu()});
+const dialog=document.getElementById('capture-dialog');let lastOpener=null;
+document.querySelectorAll('[data-capture]').forEach(opener=>opener.addEventListener('click',()=>{if(typeof dialog.showModal!=='function'){window.open(opener.dataset.capture,'_blank','noopener');return}lastOpener=opener;document.getElementById('capture-title').textContent=opener.dataset.caption;const image=document.getElementById('capture-image');image.src=opener.dataset.capture;image.alt=opener.dataset.caption;dialog.showModal();document.body.classList.add('modal-open');document.getElementById('capture-close').focus()}));
+document.getElementById('capture-close').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog){const b=dialog.getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)dialog.close()}});
+dialog.addEventListener('close',()=>{document.body.classList.remove('modal-open');lastOpener?.focus()});
 document.getElementById('year').textContent=new Date().getFullYear();
-// Sans collecte marketing : les attributs data-conversion identifient les emplacements
-// pour un futur raccordement, après choix de la mesure et de sa politique de confidentialité.
+// data-conversion repère les emplacements. Aucun pixel publicitaire ou envoi
+// de données n'est activé par cette vitrine.
+
