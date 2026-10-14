@@ -1,0 +1,72 @@
+{
+  "pilotage": {
+    "source": "assets/screens/screen-1.png",
+    "crop": [
+      250,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1286,
+      1024
+    ],
+    "bytes": 89430
+  },
+  "loyers": {
+    "source": "assets/screens/screen-14.png",
+    "crop": [
+      250,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1286,
+      1024
+    ],
+    "bytes": 88968
+  },
+  "documents": {
+    "source": "assets/screens/screen-17.png",
+    "crop": [
+      250,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1286,
+      1024
+    ],
+    "bytes": 96206
+  },
+  "bail": {
+    "source": "assets/screens/screen-23.png",
+    "crop": [
+      135,
+      46,
+      1408,
+      1024
+    ],
+    "size": [
+      1273,
+      978
+    ],
+    "bytes": 65792
+  },
+  "fiscal": {
+    "source": "assets/screens/screen-19.png",
+    "crop": [
+      250,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1286,
+      1024
+    ],
+    "bytes": 67218
+  }
+}
