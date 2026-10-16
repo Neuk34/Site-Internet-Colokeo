@@ -1,0 +1,473 @@
+{
+  "captured_at": "2026-10-16",
+  "source_revision": "93b70506b3de7234f4151d419e1fd4c9c391761e",
+  "fixture": "src/accounts/jeu_demonstration.zip",
+  "fixture_sha256": "80e13de0982c39f90ae2e0539e3c437a3a89a87bc2db12ec8e547a2a93102f95",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "full_page_method": "Largeur 1440 conservée ; hauteur du viewport augmentée jusqu’à contenir le scrollHeight de stMain, puis screenshot(full_page=True). Aucun contenu ajouté ni CSS du produit modifié.",
+  "format": "PNG original et WebP sans perte, égalité pixel par pixel vérifiée.",
+  "pages": [
+    {
+      "page": "Vue d’ensemble",
+      "slug": "vue-ensemble",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "bed2677204c1f00fc5ba6069f1b05cb656abab1ec76a9b4049adf5618d42ef7b",
+          "webp_sha256": "eeb3e406fa6360a16d8c05f7365f1ff78367f8ec347ed96195a153f46e10d3a4",
+          "webp": "vue-ensemble-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1168
+          ],
+          "png_sha256": "5c1e839596cdbf2118b1aceee425cb8cef71b2285c54ee9e261a9f8903609813",
+          "webp_sha256": "d4c6727e50fb598718e4ac04750fe8f8599deb33ea19c1d7a666ed9d58cf3616",
+          "webp": "vue-ensemble-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Ma colocation",
+      "slug": "ma-colocation",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "78e4086282ee9ae0c63739a2716bd631ea557b5e9397485df3fc3372628c2e13",
+          "webp_sha256": "f06cf70b856c66be1dac45bbd0f09d987dd18fc4a0fb07b54320d4b99575b49b",
+          "webp": "ma-colocation-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            2318
+          ],
+          "png_sha256": "1df3008268309a8284a1e54426aae7f25c1a4fc62d59f075f8d36ba37f77b594",
+          "webp_sha256": "cee7dc721de1783c3c02705e0dff2e4c08ce115be7d553215986371979e0ca5a",
+          "webp": "ma-colocation-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Locataires",
+      "slug": "locataires",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "ca171aa8bfe69215802290b6dfe3347a8f3fea8988fc9287afd9e678ed04a1e2",
+          "webp_sha256": "d61ecd858b2b0f7ff306452cb9634ac79560142078bc4b8831835f8e590c1340",
+          "webp": "locataires-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1161
+          ],
+          "png_sha256": "66c9eceda3d213cfffe10064abc782ca078b3e734762d13e177799af4d0a9af8",
+          "webp_sha256": "9cbd22755dff257cd6c97fff12a7d89007dc01215ecdb3b26b784c24c809dc28",
+          "webp": "locataires-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Fiches locataires",
+      "slug": "fiches-locataires",
+      "selection": "Emma Bernard — Chambre 1 (dossier fictif existant)",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "606f04849c9bdc187a9dcaa925a7103c1e89d634292290a651fa2d891db2f6de",
+          "webp_sha256": "0a14002d7e3684144bf5a51fb57c14ef6ed007deeb49570e63771499be23863e",
+          "webp": "fiches-locataires-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1211
+          ],
+          "png_sha256": "81cc9b975965d3fb4fc3acc1157dcd247c62f4e7fc0619d74b3b323928ab5f26",
+          "webp_sha256": "eabff656f6947bff1905f4c1a4e7852dab23364423026b07de514c9e791a6b7e",
+          "webp": "fiches-locataires-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Baux",
+      "slug": "baux",
+      "selection": "Emma Bernard — Chambre 1 (dossier fictif existant)",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "06388ae5a62b76c3e56cf78a2113b2a60a78354243a3d4fe4de83d34de6e8aab",
+          "webp_sha256": "34dd1dc448268969e03323169c29ee2b557478ce20508eada80c679889f4fd20",
+          "webp": "baux-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1697
+          ],
+          "png_sha256": "5c1ad364bfcd64854827c196c1efbc24fd463b8325eb67208bb3ef2c6c7608a5",
+          "webp_sha256": "de7b332eb7fe416a769ec17413b9d0b4ed842a5ed5f4be1c74b626d38f400782",
+          "webp": "baux-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Dépôts de garantie",
+      "slug": "depots-garantie",
+      "selection": "Emma Bernard — Chambre 1 (dossier fictif existant)",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "220eeb3cb7c3f3d78bef96c0e33b2379b7822d53058ddb5f5a123dc9faa54e72",
+          "webp_sha256": "a078db776c03a7a5e3b910cd18a6623930307cf8d22d77a814f6de3a07f5e239",
+          "webp": "depots-garantie-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1506
+          ],
+          "png_sha256": "bf09f22056bd9af19fc3a71db4d18bb7cb05fed82680334f55b52df61e0db689",
+          "webp_sha256": "cf69e6951eabfaa0ab6328e77e65332e79d20e4843bf91c6006a79c8f0d79851",
+          "webp": "depots-garantie-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "États des lieux",
+      "slug": "etats-lieux",
+      "selection": "Emma Bernard — Chambre 1 (dossier fictif existant)",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "390b033fc9686634ee2be05151dc365beb7cf1325d14152a7fdabaef00688da3",
+          "webp_sha256": "89b8a978d5bcc681aed28bd0d7c05ea88ecfba83b5014dbf0e0e4574098089f7",
+          "webp": "etats-lieux-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1451
+          ],
+          "png_sha256": "c5fcd68c7275bf836e2acc2c2b47b14dc67d65ad12a06b3118645ee475dbf5fd",
+          "webp_sha256": "4d985b5b49bec48ce04c662b51bcc17dd6c74e5ac148a45c639ad0e940a6d015",
+          "webp": "etats-lieux-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Chambres",
+      "slug": "chambres",
+      "selection": "Chambre 2 — Thomas Martin (dossier fictif existant)",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "816e23132b3048613e065a34bb2e60bb1de9cafb3ce61aa9b3085ce71adfdd8d",
+          "webp_sha256": "eac331740a7ff2dc6aec8ed5be6ca31b6bbb66aa72ab1072571965363014bff6",
+          "webp": "chambres-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1161
+          ],
+          "png_sha256": "b94abc7eb572b1451d4bd33c1803a857acaeeba7baedb5eb19d1c61f96cc3fbf",
+          "webp_sha256": "53d5053e8f34883411199746c45537d5bac3a11802523133347f1ccf99e1ac62",
+          "webp": "chambres-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Parties communes",
+      "slug": "parties-communes",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "06209e1dac0d4bb104eb402e58f7f90024a651aad96db9a87e988c27ec58312b",
+          "webp_sha256": "c1c8e61cd64182d36d74dafa44a45350a73c3625fc5a6a80196495705407dc5d",
+          "webp": "parties-communes-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "06209e1dac0d4bb104eb402e58f7f90024a651aad96db9a87e988c27ec58312b",
+          "webp_sha256": "c1c8e61cd64182d36d74dafa44a45350a73c3625fc5a6a80196495705407dc5d",
+          "webp": "parties-communes-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Planning d'entretien",
+      "slug": "planning-entretien",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "27f616106d14ca4455df5008aba4a997732dcac7060ddebbe1369f71bc7a8cfc",
+          "webp_sha256": "756c878cac8bc1bbbbfced9639e534c7c4fbfe63b3dc2fb2a334b9c76a920c1f",
+          "webp": "planning-entretien-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1412
+          ],
+          "png_sha256": "fc471739165557107ec14466983969c4d96c289cf654b7bfe56d5d0a1bbe4a40",
+          "webp_sha256": "b817a3440338b320a4ecb7dd26adc03eb039649155b5cecd0b9746db35184b32",
+          "webp": "planning-entretien-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Revenus & charges",
+      "slug": "revenus-charges",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "e06885eb0efb1add566c84083532c6932f28850d1c0700f04e5ed83004fce2b8",
+          "webp_sha256": "0cdf9730591402a2c1b33426ddd79ac152fa0ad3c7a0e1c66dfcaf99b9b06491",
+          "webp": "revenus-charges-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1041
+          ],
+          "png_sha256": "8abc8dcdc482fab6fd2127409bc51a57725b722e3430434fd0cd7e081ba5efe7",
+          "webp_sha256": "eb61d2f0a2ed8a6aba01cf59afeb5f3780d0c4d614e52c2574e181cc395aabcc",
+          "webp": "revenus-charges-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Loyers",
+      "slug": "loyers",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "0f0dd9edc56bb80d231fe0aa8d4eaff3fc769d863299a3ecde5b0a60356672d7",
+          "webp_sha256": "9ff0207a44e4140f8bcd01aebeee1b114860204fb2a41a675fdab39cde447cb2",
+          "webp": "loyers-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "0f0dd9edc56bb80d231fe0aa8d4eaff3fc769d863299a3ecde5b0a60356672d7",
+          "webp_sha256": "9ff0207a44e4140f8bcd01aebeee1b114860204fb2a41a675fdab39cde447cb2",
+          "webp": "loyers-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Charges",
+      "slug": "charges",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "f415728419b1c9d765ae8baf92b1414b011d8967af4811ba2390b1154e089259",
+          "webp_sha256": "49beef2d946f62924bf406308566280b31b719d79ad4ed004d5f483f255a5638",
+          "webp": "charges-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "f415728419b1c9d765ae8baf92b1414b011d8967af4811ba2390b1154e089259",
+          "webp_sha256": "49beef2d946f62924bf406308566280b31b719d79ad4ed004d5f483f255a5638",
+          "webp": "charges-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Sinistres et impayés",
+      "slug": "sinistres-impayes",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "d9d12a334020fc72126759106f3b472ccdfd75f8178ec7a49498dd7b2eefa677",
+          "webp_sha256": "329c7660714dd4af20e3b5d6dc0e289fe2eb148c8db6667090f4c43a27e32ac6",
+          "webp": "sinistres-impayes-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1062
+          ],
+          "png_sha256": "457eceb47c5fb559f97ee8b71d312fb86c0d3a608683c48fb05bde2393f37248",
+          "webp_sha256": "e8f32e3ded0564ccce9f4ff93b66f37418db9c5d03ca74a4187d3546dbc6bec0",
+          "webp": "sinistres-impayes-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Travaux et entretiens",
+      "slug": "travaux-entretiens",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "b37685e3afa9eda56387e1a070ea5eb99f3daa67fc24b5db314ce85f89432a8f",
+          "webp_sha256": "3e5275e5cf2e0d8401542fb01de8e3602e23d4e2fd281af34710975aa6290a1a",
+          "webp": "travaux-entretiens-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "b37685e3afa9eda56387e1a070ea5eb99f3daa67fc24b5db314ce85f89432a8f",
+          "webp_sha256": "3e5275e5cf2e0d8401542fb01de8e3602e23d4e2fd281af34710975aa6290a1a",
+          "webp": "travaux-entretiens-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Documents",
+      "slug": "documents",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "c13ec03262b1b2fb92c26af1fa6b769cdcf5f7088148bac1a11327708a2c0749",
+          "webp_sha256": "bf8b2e62d09a0830e00c22fe329d441d9ee43b27b1a4b41980c0f01a4b86de86",
+          "webp": "documents-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1152
+          ],
+          "png_sha256": "e5c753abc01ac5cb974255488de277ad809c8325d0520c16066d835a90505f54",
+          "webp_sha256": "64e5efb1070d892d55b025c4bb317b695d062552663c19b7500ec15e034ac5e1",
+          "webp": "documents-full.webp"
+        }
+      ]
+    },
+    {
+      "page": "Comptabilité et fiscalité",
+      "slug": "comptabilite-fiscalite",
+      "selection": "Maison Angers — jeu de démonstration existant",
+      "files": [
+        {
+          "variant": "desktop",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "d5db668998f0c7eb09ba519551da98923001f92674a23ee476fdc750d0c16c13",
+          "webp_sha256": "e1e3ec49a0d73966eeb4f18dfeba451fcc41507376c368e23e2bc522e0e5ad89",
+          "webp": "comptabilite-fiscalite-desktop.webp"
+        },
+        {
+          "variant": "full",
+          "dimensions": [
+            1440,
+            1000
+          ],
+          "png_sha256": "d5db668998f0c7eb09ba519551da98923001f92674a23ee476fdc750d0c16c13",
+          "webp_sha256": "e1e3ec49a0d73966eeb4f18dfeba451fcc41507376c368e23e2bc522e0e5ad89",
+          "webp": "comptabilite-fiscalite-full.webp"
+        }
+      ]
+    }
+  ]
+}
