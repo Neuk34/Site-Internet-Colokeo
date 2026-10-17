@@ -20,48 +20,64 @@ const demoCaptures = [
  ['comptabilite-fiscalite','Comptabilité et fiscalité','Écran de démarrage de la comptabilité. Le compte de démonstration n’est pas initialisé : aucun calcul ni formulaire fiscal finalisé n’est montré.']
 ];
 const capturePath=(slug,variant='desktop')=>`assets/screens/demo-20261016/${slug}-${variant}.webp`;
-const gallery=document.createElement('section');
-gallery.className='capture-gallery';
-gallery.setAttribute('aria-labelledby','capture-gallery-title');
-const galleryTitle=document.createElement('h3');
-galleryTitle.id='capture-gallery-title';galleryTitle.textContent='Le produit, page par page';gallery.append(galleryTitle);
-const note=document.createElement('p');note.className='gallery-note';
-note.textContent='17 pages capturées le 16 octobre 2026 avec le jeu de démonstration existant, dans un compte local isolé. Les noms, coordonnées et dossiers sont fictifs. Chaque aperçu provient d’une capture desktop de 1440 × 1000 ; ouvre la page complète pour lire tous les détails. Les états vides sont conservés.';
-gallery.append(note);
-const grid=document.createElement('div');grid.className='capture-grid';gallery.append(grid);
-function openDemoCapture(src,title,trigger){
- const dialog=document.getElementById('capture-dialog');
- document.getElementById('capture-title').textContent=title;
- const image=document.getElementById('capture-image');image.src=src;image.alt=title;
- dialog.showModal();document.body.classList.add('modal-open');
- dialog.addEventListener('close',()=>trigger.focus(),{once:true});
-}
-for(const [slug,title,caption] of demoCaptures){
- const figure=document.createElement('figure');figure.className='capture-card';figure.dataset.page=slug;
- const button=document.createElement('button');button.type='button';button.className='capture-open';button.setAttribute('aria-label',`Agrandir la page complète : ${title}`);
- const image=document.createElement('img');image.src=capturePath(slug);image.alt=`${title} — capture réelle sur données fictives`;image.width=1440;image.height=1000;image.loading='lazy';image.decoding='async';button.append(image);
- button.addEventListener('click',()=>openDemoCapture(capturePath(slug,'full'),`${title} · données fictives`,button));figure.append(button);
- const legend=document.createElement('figcaption');const badge=document.createElement('span');badge.className='capture-badge';badge.textContent='CAPTURE DU PRODUIT · DÉMONSTRATION';legend.append(badge);
- const heading=document.createElement('h4');heading.textContent=title;legend.append(heading);
- const description=document.createElement('p');description.textContent=caption;legend.append(description);
- const links=document.createElement('div');links.className='capture-links';
- for(const [variant,label] of [['desktop','Desktop 1440 × 1000'],['full','Page complète']]){
-  const a=document.createElement('a');a.href=capturePath(slug,variant);a.textContent=label;a.target='_blank';a.rel='noopener';links.append(a);
+const captureGroups=[
+ {id:'pilotage',label:'Pilotage',pages:['vue-ensemble','ma-colocation']},
+ {id:'locataires',label:'Locataires',pages:['locataires','fiches-locataires','baux','depots-garantie','etats-lieux']},
+ {id:'logement',label:'Logement',pages:['chambres','parties-communes','planning-entretien','travaux-entretiens']},
+ {id:'finances',label:'Finances',pages:['revenus-charges','loyers','charges','sinistres-impayes','comptabilite-fiscalite']},
+ {id:'documents',label:'Documents',pages:['documents']}
+];
+const categoryNav=document.getElementById('capture-categories');
+const pageNav=document.getElementById('capture-pages');
+const categoryPanel=document.getElementById('capture-category-panel');
+let currentGroup=null;
+function showCapture(slug){
+ const data=demoCaptures.find(c=>c[0]===slug);
+ const group=captureGroups.find(g=>g.pages.includes(slug));
+ if(!data||!group)return;
+ if(currentGroup!==group.id){
+  currentGroup=group.id;pageNav.replaceChildren();pageNav.hidden=group.pages.length===1;
+  for(const pageSlug of group.pages){
+   const button=document.createElement('button');button.type='button';
+   button.dataset.capturePage=pageSlug;button.textContent=demoCaptures.find(c=>c[0]===pageSlug)[1];
+   button.addEventListener('click',()=>showCapture(pageSlug));pageNav.append(button);
+  }
  }
- legend.append(links);figure.append(legend);grid.append(figure);
+ categoryNav.querySelectorAll('button').forEach(button=>{
+  const active=button.dataset.captureGroup===group.id;
+  button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;
+ });
+ categoryPanel.setAttribute('aria-labelledby','capture-group-'+group.id);
+ pageNav.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.capturePage===slug)));
+ document.getElementById('showcase-title').textContent=data[1];
+ document.getElementById('showcase-description').textContent=data[2];
+ const image=document.getElementById('showcase-image');
+ image.src=capturePath(slug);image.alt=data[1]+' — capture réelle sur données fictives';
+ const opener=document.getElementById('showcase-open');
+ opener.dataset.capture=capturePath(slug,'full');opener.dataset.caption=data[1]+' · données fictives';
+ opener.setAttribute('aria-label','Agrandir la page complète : '+data[1]);
+ document.getElementById('showcase-caption').textContent=data[1]+' · capture desktop 1440 × 1000';
+ document.getElementById('showcase-desktop').href=capturePath(slug);
+ document.getElementById('showcase-full').href=capturePath(slug,'full');
+ categoryPanel.dataset.activePage=slug;
 }
-document.querySelector('#produit .mini-features').replaceWith(gallery);
-const actualPanels={
- loyers:['loyers','Suis les loyers.\nLis la situation du mois.','Le jeu fictif permet de voir les loyers attendus et les encaissements, sans utiliser les comptes de vrais locataires.',['Situation mensuelle des loyers','Dossiers et montants du jeu de démonstration','Capture complète accessible ci-dessous']],
- bail:['baux','Consulte le bail.\nRepère ce qui manque.','Le dossier d’Emma montre les conditions enregistrées et les contrôles de garantie. Aucune version générée n’est présente dans ce jeu.',['Loyer, charges et dépôt de garantie','Conditions déclarées et champs manquants','Contrôles de cohérence de la garantie']],
- documents:['documents','Retrouve les pièces.\nGarde leur contexte.','La bibliothèque présente les neuf pièces fictives déjà présentes dans le jeu de démonstration.',['Mises en demeure et état des lieux','Attestation et décompte du dépôt','Recherche et filtres visibles dans la capture']],
- fiscal:['comptabilite-fiscalite','Démarre la comptabilité.\nFixe ton point de départ.','Le jeu existant s’ouvre sur le démarrage de la comptabilité. Aucun résultat fiscal finalisé n’a été ajouté pour cette présentation.',['Écran « Mon année »','Explication du démarrage en trois questions','Commande « Commencer »']]
-};
-for(const [key,[slug,title,description,checks]] of Object.entries(actualPanels)){
- Object.assign(productData[key],{title,description,checks,image:capturePath(slug),caption:demoCaptures.find(c=>c[0]===slug)[1]+' · capture réelle sur données fictives',alt:demoCaptures.find(c=>c[0]===slug)[2]});
+for(const group of captureGroups){
+ const button=document.createElement('button');button.type='button';button.id='capture-group-'+group.id;
+ button.dataset.captureGroup=group.id;button.setAttribute('role','tab');button.setAttribute('aria-controls','capture-category-panel');
+ const label=document.createElement('span');label.textContent=group.label;
+ const count=document.createElement('span');count.className='capture-count';count.textContent=group.pages.length;
+ button.append(label,count);button.addEventListener('click',()=>showCapture(group.pages[0]));
+ button.addEventListener('keydown',event=>{
+  const buttons=[...categoryNav.querySelectorAll('button')];let index=buttons.indexOf(button);
+  if(event.key==='ArrowRight')index=(index+1)%buttons.length;
+  else if(event.key==='ArrowLeft')index=(index+buttons.length-1)%buttons.length;
+  else if(event.key==='Home')index=0;else if(event.key==='End')index=buttons.length-1;else return;
+  event.preventDefault();buttons[index].click();buttons[index].focus();
+ });categoryNav.append(button);
 }
-selectProduct('loyers');
-document.getElementById('product-image').width=1440;document.getElementById('product-image').height=1000;
+// Les liens de la vitrine gardent leur accès direct au bon écran.
+window.selectProduct=key=>showCapture(({loyers:'loyers',bail:'baux',documents:'documents',fiscal:'comptabilite-fiscalite'})[key]||key);
+showCapture('vue-ensemble');
 const hero=document.querySelector('.hero-capture');
 if(hero){hero.dataset.capture=capturePath('vue-ensemble','full');hero.dataset.caption='Vue d’ensemble · capture réelle sur données fictives';const img=hero.querySelector('img');img.src=capturePath('vue-ensemble');img.width=1440;img.height=1000;img.alt=demoCaptures[0][2];}
 const portal=document.querySelector('#portail');
