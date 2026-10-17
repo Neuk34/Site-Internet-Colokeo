@@ -68,8 +68,16 @@ captures du produit. Ce travail ne publie ni ne connecte ce futur portail.
 
 ## Vérification de la vitrine
 
-Playwright vérifie les 17 images et leurs pages complètes, les quatre onglets,
-le clavier, les fenêtres d’agrandissement, l’absence de débordement horizontal à
+La section « Voici ce que tu peux prendre en main » utilise une navigation
+unique : cinq rubriques (Pilotage, Locataires, Logement, Finances, Documents),
+puis les pages de la rubrique choisie. Une seule capture grand format est
+affichée à la fois, avec sa légende et ses liens desktop/page complète.
+Les quatre anciens onglets et la galerie répétitive ont été supprimés.
+Les liens de découverte présents ailleurs dans la vitrine ouvrent directement
+la page correspondante dans cette section.
+
+Playwright vérifie les 17 images et leurs pages complètes, les cinq rubriques,
+les trois liens directs existants, le clavier, les fenêtres d’agrandissement, l’absence de débordement horizontal à
 1440 et 390 pixels, les avertissements de maquette et les erreurs JavaScript.
 Les originaux PNG et leurs WebP sont exportés ensemble dans une archive de
 livraison distincte du site ; le site utilise les WebP sans perte.
