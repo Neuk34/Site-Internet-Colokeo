@@ -74,5 +74,8 @@ le clavier, les fenêtres d’agrandissement, l’absence de débordement horizo
 Les originaux PNG et leurs WebP sont exportés ensemble dans une archive de
 livraison distincte du site ; le site utilise les WebP sans perte.
 
-La modification est livrée sur une branche dédiée. Aucun déploiement de
-Colokéo-SaaS ni changement des données réelles n’est nécessaire.
+La publication de la vitrine utilise la procédure existante GitHub Pages :
+branche `main`, dossier `/`, domaine `colokeo.fr`, HTTPS activé.
+Les trois points de douleur et leurs réponses demandés ont été ajoutés avant
+publication. Aucun déploiement de Colokéo-SaaS ni changement des données réelles
+n’est nécessaire.
