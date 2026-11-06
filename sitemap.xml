@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.colokeo.fr/</loc></url><url><loc>https://www.colokeo.fr/fonctionnalites.html</loc></url><url><loc>https://www.colokeo.fr/cas-pratiques.html</loc></url><url><loc>https://www.colokeo.fr/comparatif.html</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.colokeo.fr/</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites.html</loc></url>
+  <url><loc>https://www.colokeo.fr/cas-pratiques.html</loc></url>
+  <url><loc>https://www.colokeo.fr/comparatif.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-pilotage.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-locataires.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-argent.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-documents.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-bien-vie.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-portail.html</loc></url>
+  <url><loc>https://www.colokeo.fr/fonctionnalites-fiscalite.html</loc></url>
+</urlset>
