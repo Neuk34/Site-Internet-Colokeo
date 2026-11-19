@@ -1,0 +1,20 @@
+Pré-prod du site vitrine : https://colokeo.com/preprod/ (protégée par mot de passe)
+Le vrai site (www.colokeo.fr, GitHub Pages) n'est jamais touché par cet outil.
+
+Envoyer une version :
+  python publier_preprod.py --zip "C:\chemin\vers\le-site.zip"
+  python publier_preprod.py --branche nom-de-branche
+  python publier_preprod.py                (le dossier C:\Sites Internet\Colokeo.fr tel qu'il est)
+
+Voir ce qui partirait, sans rien envoyer : ajouter --essai
+Changer le mot de passe de la pré-prod : ajouter --changer-mot-de-passe
+
+L'outil demande le mot de passe FTP d'OVH (compte colokew) à chaque envoi.
+Il ne l'écrit nulle part. Il se change dans l'espace client OVH :
+Hébergements > colokeo.com > FTP-SSH > crayon à côté du mot de passe.
+
+Ce que fait l'outil chez OVH (hébergement gratuit de colokeo.com, envoi chiffré SFTP) :
+  www/preprod/        la pré-prod (mot de passe, HTTPS seulement, jamais indexée)
+  www/.htaccess       colokeo.com renvoie vers www.colokeo.fr, sauf /preprod/
+  .htpasswd-preprod   le mot de passe de la pré-prod, hors du dossier web
+Seuls les fichiers d'un site statique partent (pas de .php, .py, .md...).

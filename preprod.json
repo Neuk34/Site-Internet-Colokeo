@@ -1,0 +1,15 @@
+{
+  "serveur": "ftp.cluster129.hosting.ovh.net",
+  "identifiant": "colokew",
+  "empreintes_serveur": [
+    "SHA256:xhieLplnoEvvl7+a8sq8wLCh/bvOQvQFIVewi+fK2og",
+    "SHA256:itDZ6cuojUbG3+jrh5F/igkXa2xjzejbYJkNAlw8/VM"
+  ],
+  "chemin_absolu": "/home/colokew",
+  "dossier_web": "www",
+  "sous_dossier": "preprod",
+  "adresse": "https://colokeo.com/preprod/",
+  "site_public": "https://www.colokeo.fr",
+  "dossier_site": "C:\\Sites Internet\\Colokeo.fr",
+  "port_https": "443"
+}
